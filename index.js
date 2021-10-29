@@ -143,4 +143,4 @@ client.on('messageCreate', (message) => {
 	console.log(argumentos[0]);
 });
 
-client.login(config.token);
+client.login(process.env.token);

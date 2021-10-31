@@ -85,7 +85,7 @@ client.on('messageCreate', (message) => {
 						// );
 
 						message.channel.send(
-							`**${vtuber.nombre}** streameando ${embedTitulo}>*`
+							`**${vtuber.nombre}** streameando ${{ embeds: [embedTitulo] }}>*`
 						);
 					});
 
@@ -133,7 +133,7 @@ client.on('messageCreate', (message) => {
 									.setURL(vtuber.link);
 
 								message.channel.send(
-									`**${vtuber.nombre}** prueba prueba test test ${embedTitulo}>*`
+									`**${vtuber.nombre}** prueba prueba test test ${{ embeds: [embedTitulo] }}>*`
 								);
 								// message.channel.send(
 								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`

@@ -135,10 +135,10 @@ client.on('messageCreate', (message) => {
 									.setURL(vtuber.link);
 
 								message.channel.send(
-									`**${vtuber.nombre}** prueba prueba test test ${{
-										embeds: [embedTitulo],
-									}}>*`
+									`**${vtuber.nombre}** test ${{ embeds: [embedTitulo] }}>*`
 								);
+								channel.send({ embeds: [embedTitulo] });
+								console.log({ embeds: [embedTitulo] });
 								// message.channel.send(
 								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`
 								// );

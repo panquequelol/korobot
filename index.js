@@ -115,7 +115,7 @@ client.on('messageCreate', (message) => {
 						titulo: vtuber.title,
 						monthStream: vtuber.live_schedule.substring(5, 7) * 1,
 						yearStream: vtuber.live_schedule.substring(0, 4) * 1,
-						dayStream: vtube.live_schedule.substring(8, 10) * 1,
+						dayStream: vtuber.live_schedule.substring(8, 10) * 1,
 						miniatura: vtuber.thumbnail,
 						comienzo: vtuber.live_start,
 					}));

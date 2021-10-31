@@ -60,46 +60,40 @@ client.on('messageCreate', (message) => {
 			});
 			break;
 
-		// case 'online':
-		// 	const quienOnline = async () => {
-		// 		try {
-		// 			const respuesta = await fetch('https://api.holotools.app/v1/live');
-		// 			const data = await respuesta.json();
+		case 'online':
+			const quienOnline = async () => {
+				try {
+					const respuesta = await fetch('https://api.holotools.app/v1/live');
+					const data = await respuesta.json();
 
-		// 			const envivo = data.live.map((vtuber) => ({
-		// 				nombre: `${vtuber.channel.name.split(' ')[0]} ${
-		// 					vtuber.channel.name.split(' ')[1]
-		// 				}`,
-		// 				link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
-		// 				titulo: vtuber.title,
-		// 				miniatura: vtuber.thumbnail,
-		// 				viewers: vtuber.live_viewers,
-		// 			}));
+					const envivo = data.live.map((vtuber) => ({
+						nombre: `${vtuber.channel.name.split(' ')[0]} ${
+							vtuber.channel.name.split(' ')[1]
+						}`,
+						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
+						titulo: vtuber.title,
+						miniatura: vtuber.thumbnail,
+						viewers: vtuber.live_viewers,
+					}));
 
-		// 			message.reply(` > ** Están en stream... **`);
-		// 			envivo.forEach((vtuber) => {
-		// 				let embedTitulo = new MessageEmbed()
-		// 					.setTitle(vtuber.titulo)
-		// 					.setURL(vtuber.link);
+					message.reply(` > ** Están en stream... **`);
+					envivo.forEach((vtuber) => {
+						let embedTitulo = new MessageEmbed()
+							.setTitle(vtuber.titulo)
+							.setURL(vtuber.link)
+							.setAuthor(`${vtuber.nombre} ${diaStream}/${mesStream}`)
+							.setImage(vtuber.imagen);
 
-		// 				// message.channel.send(
-		// 				// 	`**${vtuber.nombre}** streameando ${vtuber.titulo} en: *<${vtuber.link}>*`
-		// 				// );
+						message.channel.send({ embeds: [embedTitulo] });
+					});
 
-		// 				message.channel.send(
-		// 					`**${vtuber.nombre}** streameando ${{ embeds: [embedTitulo] }}>*`
-		// 				);
-		// 				channel.send({ embeds: [embedTitulo] });
-		// 				console.log({ embeds: [embedTitulo] });
-		// 			});
-
-		// 			// message.channel.send(`${envivo}`)
-		// 		} catch (error) {
-		// 			console.log(`hubo este error: ${error}`);
-		// 		}
-		// 	};
-		// 	quienOnline();
-		// 	break;
+					// message.channel.send(`${envivo}`)
+				} catch (error) {
+					console.log(`hubo este error: ${error}`);
+				}
+			};
+			quienOnline();
+			break;
 
 		case 'upcoming':
 			const isUpcoming = async () => {
@@ -133,10 +127,7 @@ client.on('messageCreate', (message) => {
 							diaStream = vtuber.fecha.substring(8, 10) * 1;
 
 						if (mesActual === mesStream && anhoActual === anhoStream) {
-							if (
-								diaActual * 1 === diaStream * 1 ||
-								diaActual * 1 === diaStream + 1
-							) {
+							if (diaActual === diaStream || diaActual === diaStream + 1) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link)
@@ -148,7 +139,7 @@ client.on('messageCreate', (message) => {
 						}
 					});
 				} catch (error) {
-					console.log(`hubo este error en Async: ${error}`);
+					console.log(`hubo este error: ${error}`);
 				}
 			};
 			isUpcoming();

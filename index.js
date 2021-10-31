@@ -93,9 +93,7 @@ client.on('messageCreate', (message) => {
 					const data = await respuesta.json();
 
 					const estaUpcoming = data.upcoming.map((vtuber) => ({
-						nombre: `${vtuber.channel.name.split(' ')[0]} ${
-							vtuber.channel.name.split(' ')[1]
-						}`,
+						nombre: `${vtuber.channel.name.split(' ')[0][1]}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 						fecha: vtuber.live_schedule,

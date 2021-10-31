@@ -135,17 +135,19 @@ client.on('messageCreate', (message) => {
 						if (mesActual === mesStream && anhoActual === anhoStream) {
 							if (diaActual === diaStream || diaActual === diaStream + 1) {
 								let embedTitulo = new MessageEmbed()
-									.setTitle(vtuber.titulo)
+									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
-									.setAuthor(`${vtuber.nombre} ${diaStream}/${mesStream}`)
-									.setImage(vtuber.imagen);
+									.setAuthor(
+										`${vtuber.nombre} hara stream el ${diaStream}/${mesStream}`
+									)
+									.setThumbnail(vtuber.imagen);
 
 								message.channel.send({ embeds: [embedTitulo] });
 							}
 						}
 					});
 				} catch (error) {
-					console.log(`hubo este error: ${error}`);
+					console.log(`hubo este error en Async: ${error}`);
 				}
 			};
 			isUpcoming();

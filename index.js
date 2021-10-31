@@ -137,11 +137,12 @@ client.on('messageCreate', (message) => {
 								message.channel.send(
 									`**${vtuber.nombre}** test ${{ embeds: [embedTitulo] }}>*`
 								);
-								channel.send({ embeds: [embedTitulo] });
+
 								console.log({ embeds: [embedTitulo] });
 								// message.channel.send(
 								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`
 								// );
+								message.send({ embeds: [embedTitulo] });
 							}
 						}
 					});

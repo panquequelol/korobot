@@ -72,6 +72,8 @@ client.on('messageCreate', (message) => {
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
+						miniatura: vtuber.thumbnail,
+						viewers: vtuber.live_viewers,
 					}));
 
 					message.reply(` > ** Están en stream... **`);
@@ -111,7 +113,11 @@ client.on('messageCreate', (message) => {
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
-						fecha: vtuber.live_schedule,
+						monthStream: vtuber.live_schedule.substring(5, 7) * 1,
+						yearStream: vtuber.live_schedule.substring(0, 4) * 1,
+						dayStream: vtube.live_schedule.substring(8, 10) * 1,
+						miniatura: vtuber.thumbnail,
+						comienzo: vtuber.live_start,
 					}));
 
 					// data.upcoming.live_schedule
@@ -124,30 +130,22 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
-						let mesStream = vtuber.fecha.substring(5, 7) * 1,
-							anhoStream = vtuber.fecha.substring(0, 4) * 1,
-							diaStream = vtuber.fecha.substring(8, 10) * 1;
+						// ! fechas obsoletos.
+						// let mesStream = vtuber.fecha.substring(5, 7) * 1,
+						// 	anhoStream = vtuber.fecha.substring(0, 4) * 1,
+						// 	diaStream = vtuber.fecha.substring(8, 10) * 1;
 
-						if (mesActual === mesStream && anhoStream === anhoActual) {
-							if (diaActual === diaStream || diaActual === diaStream + 1) {
+						if (mesActual === monthStream && yearStream === anhoActual) {
+							if (diaActual === dayStream || diaActual === dayStream + 1) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
-									.setURL(vtuber.link);
+									.setURL(vtuber.link)
+									.setAuthor(
+										`**${vtuber.nombre}** el dia ${vtuber.dayStream}/${vtuber.monthStream}     =${vtuber.comienzo}`
+									)
+									.setThumbnail(`${vtuber.miniatura}`);
 
-								let mensajeNombre = vtuber.nombre;
-								let mensajeFecha = `${diaActual}/${mesStream}`;
-
-								message.channel.send(
-									(mensajeNombre,
-									'esta en directo el',
-									mensajeFecha,
-									{ embeds: [embedTitulo] })
-								);
-
-								// message.channel.send(
-								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`
-								// );
-								// message.channel.send({ embeds: [embedTitulo] });
+								message.channel.send({ embeds: [embedTitulo] });
 							}
 						}
 					});

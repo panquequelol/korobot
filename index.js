@@ -134,9 +134,14 @@ client.on('messageCreate', (message) => {
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link);
 
+								let mensajeNombre = vtuber.nombre;
+								let mensajeFecha = `${diaActual}/${mesStream}`;
+
 								message.channel.send(
-									`**${vtuber.nombre}** el ${diaActual}/${mesStream}`,
-									{ embeds: [embedTitulo] }
+									(mensajeNombre,
+									'esta en directo el',
+									mensajeFecha,
+									{ embeds: [embedTitulo] })
 								);
 
 								// message.channel.send(

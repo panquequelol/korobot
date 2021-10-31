@@ -6,6 +6,7 @@ import fetch from 'node-fetch';
 import { createRequire } from 'module';
 import { resolve } from 'path';
 const require = createRequire(import.meta.url);
+const { MessageEmbed } = require('discord.js');
 
 console.clear();
 const Discord = require('discord.js');
@@ -66,15 +67,25 @@ client.on('messageCreate', (message) => {
 					const data = await respuesta.json();
 
 					const envivo = data.live.map((vtuber) => ({
-						nombre: `${vtuber.channel.name.split(' ')[0][1]}`,
+						nombre: `${vtuber.channel.name.split(' ')[0]} ${
+							vtuber.channel.name.split(' ')[1]
+						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 					}));
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
+						let embedTitulo = new MesssageEmbed()
+							.setTitle(vtuber.titulo)
+							.setURL(vtuber.link);
+
+						// message.channel.send(
+						// 	`**${vtuber.nombre}** streameando ${vtuber.titulo} en: *<${vtuber.link}>*`
+						// );
+
 						message.channel.send(
-							`**${vtuber.nombre}** streameando ${vtuber.titulo} en: *<${vtuber.link}>*`
+							`**${vtuber.nombre}** streameando ${embedTitulo}>*`
 						);
 					});
 
@@ -93,7 +104,9 @@ client.on('messageCreate', (message) => {
 					const data = await respuesta.json();
 
 					const estaUpcoming = data.upcoming.map((vtuber) => ({
-						nombre: `${vtuber.channel.name.split(' ')[0][1]}`,
+						nombre: `${vtuber.channel.name.split(' ')[0]} ${
+							vtuber.channel.name.split(' ')[1]
+						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 						fecha: vtuber.live_schedule,

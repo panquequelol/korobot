@@ -114,8 +114,7 @@ client.on('messageCreate', (message) => {
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 						fecha: vtuber.live_schedule,
-						miniatura: `${vtuber.thumbnail}`,
-						comienzo: vtuber.live_start,
+						imagen: vtuber.channel.photo,
 					}));
 
 					// data.upcoming.live_schedule
@@ -138,9 +137,8 @@ client.on('messageCreate', (message) => {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link)
-									.setAuthor(
-										`**${vtuber.nombre}** el dia ${diaStream}/${mesStream}     =${vtuber.comienzo}`
-									)
+									.setAuthor(`${vtuber.nombre} ${diaStream}/${mesStream}`)
+									.setImage(vtuber.imagen);
 
 								message.channel.send({ embeds: [embedTitulo] });
 							}

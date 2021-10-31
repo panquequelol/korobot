@@ -141,7 +141,6 @@ client.on('messageCreate', (message) => {
 									.setAuthor(
 										`**${vtuber.nombre}** el dia ${diaStream}/${mesStream}     =${vtuber.comienzo}`
 									)
-									.setThumbnail(`${vtuber.miniatura}`);
 
 								message.channel.send({ embeds: [embedTitulo] });
 							}

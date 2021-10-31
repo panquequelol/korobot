@@ -128,9 +128,16 @@ client.on('messageCreate', (message) => {
 
 						if (mesActual === mesStream && anhoStream === anhoActual) {
 							if (diaActual === diaStream || diaActual === diaStream + 1) {
+								let embedTitulo = new MesssageEmbed()
+									.setTitle(vtuber.titulo)
+									.setURL(vtuber.link);
+
 								message.channel.send(
-									`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`
+									`**${vtuber.nombre}** prueba prueba test test ${embedTitulo}>*`
 								);
+								// message.channel.send(
+								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`
+								// );
 							}
 						}
 					});

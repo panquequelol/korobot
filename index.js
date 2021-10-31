@@ -140,7 +140,7 @@ client.on('messageCreate', (message) => {
 									.setAuthor(
 										`${vtuber.nombre} hara stream el ${diaStream}/${mesStream}`
 									)
-									.setThumbnail(vtuber.imagen);
+									.setImage(vtuber.imagen);
 
 								message.channel.send({ embeds: [embedTitulo] });
 							}

@@ -133,13 +133,14 @@ client.on('messageCreate', (message) => {
 							diaStream = vtuber.fecha.substring(8, 10) * 1;
 
 						if (mesActual === mesStream && anhoActual === anhoStream) {
-							if (diaActual === diaStream || diaActual === diaStream + 1) {
+							if (
+								diaActual * 1 === diaStream * 1 ||
+								diaActual * 1 === diaStream + 1
+							) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link)
-									.setAuthor(
-										`${vtuber.nombre} hara stream el ${diaStream}/${mesStream}`
-									)
+									.setAuthor(`${vtuber.nombre} ${diaStream}/${mesStream}`)
 									.setImage(vtuber.imagen);
 
 								message.channel.send({ embeds: [embedTitulo] });

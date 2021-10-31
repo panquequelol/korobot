@@ -113,9 +113,7 @@ client.on('messageCreate', (message) => {
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
-						monthStream: vtuber.live_schedule.substring(5, 7) * 1,
-						yearStream: vtuber.live_schedule.substring(0, 4) * 1,
-						dayStream: vtuber.live_schedule.substring(8, 10) * 1,
+						fecha: vtuber.live_schedule,
 						miniatura: vtuber.thumbnail,
 						comienzo: vtuber.live_start,
 					}));
@@ -131,17 +129,17 @@ client.on('messageCreate', (message) => {
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
 						// ! fechas obsoletos.
-						// let mesStream = vtuber.fecha.substring(5, 7) * 1,
-						// 	anhoStream = vtuber.fecha.substring(0, 4) * 1,
-						// 	diaStream = vtuber.fecha.substring(8, 10) * 1;
+						let mesStream = vtuber.fecha.substring(5, 7) * 1,
+							anhoStream = vtuber.fecha.substring(0, 4) * 1,
+							diaStream = vtuber.fecha.substring(8, 10) * 1;
 
-						if (mesActual === monthStream && yearStream === anhoActual) {
-							if (diaActual === dayStream || diaActual === dayStream + 1) {
+						if (mesActual === mesStream && anhoActual === anhoStream) {
+							if (diaActual === diaStream || diaActual === diaStream + 1) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link)
 									.setAuthor(
-										`**${vtuber.nombre}** el dia ${vtuber.dayStream}/${vtuber.monthStream}     =${vtuber.comienzo}`
+										`**${vtuber.nombre}** el dia ${diaStream}/${mesStream}     =${vtuber.comienzo}`
 									)
 									.setThumbnail(`${vtuber.miniatura}`);
 

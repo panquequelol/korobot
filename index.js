@@ -14,17 +14,10 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 client.commands = new Discord.Collection();
 
-
-
-
 client.on('ready', () => {
 	console.log('bot prendido');
 	client.user.setActivity('+help');
 });
-
-
-
-
 
 client.on('messageCreate', (message) => {
 	if (!message.content.startsWith(config.prefix)) return;
@@ -73,9 +66,7 @@ client.on('messageCreate', (message) => {
 					const data = await respuesta.json();
 
 					const envivo = data.live.map((vtuber) => ({
-						nombre: `${vtuber.channel.name.split(' ')[0]} ${
-							vtuber.channel.name.split(' ')[1]
-						}`,
+						nombre: `${vtuber.channel.name.split(' ')[0][1]}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 					}));

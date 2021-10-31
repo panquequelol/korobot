@@ -87,6 +87,8 @@ client.on('messageCreate', (message) => {
 						message.channel.send(
 							`**${vtuber.nombre}** streameando ${{ embeds: [embedTitulo] }}>*`
 						);
+						channel.send({ embeds: [embedTitulo] });
+						console.log({ embeds: [embedTitulo] });
 					});
 
 					// message.channel.send(`${envivo}`)
@@ -133,7 +135,9 @@ client.on('messageCreate', (message) => {
 									.setURL(vtuber.link);
 
 								message.channel.send(
-									`**${vtuber.nombre}** prueba prueba test test ${{ embeds: [embedTitulo] }}>*`
+									`**${vtuber.nombre}** prueba prueba test test ${{
+										embeds: [embedTitulo],
+									}}>*`
 								);
 								// message.channel.send(
 								// 	`**${vtuber.nombre}** el ${diaActual}/${mesStream} en: *<${vtuber.link}>*`

@@ -76,7 +76,7 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
-						let embedTitulo = new MesssageEmbed()
+						let embedTitulo = new MessageEmbed()
 							.setTitle(vtuber.titulo)
 							.setURL(vtuber.link);
 
@@ -128,7 +128,7 @@ client.on('messageCreate', (message) => {
 
 						if (mesActual === mesStream && anhoStream === anhoActual) {
 							if (diaActual === diaStream || diaActual === diaStream + 1) {
-								let embedTitulo = new MesssageEmbed()
+								let embedTitulo = new MessageEmbed()
 									.setTitle(vtuber.titulo)
 									.setURL(vtuber.link);
 

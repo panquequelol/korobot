@@ -16,6 +16,23 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 client.commands = new Discord.Collection();
 
+
+// funcion de discord js, obtener mencion
+function getUserFromMention(mention) {
+	if (!mention) return;
+
+	if (mention.startsWith('<@') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+
+		if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		}
+
+		return client.users.cache.get(mention);
+	}
+}
+
+
 client.on('ready', () => {
 	console.log('bot prendido');
 	client.user.setActivity('+help');
@@ -54,8 +71,8 @@ client.on('messageCreate', (message) => {
 
 		case '4k':
 			let korone4k = new MessageEmbed()
-				.setAuthor(
-					`**${message.author.username}** atrapo en 4k a ${ argumentos[1] }`
+				.setTitle(
+					`${message.author.username} atrapo en 4k a ${ getUserFromMention(argumentos[1]) }`
 				)
 				.setImage('https://c.tenor.com/bE4ROSkkHRcAAAAd/korone-hololive.gif');
 			message.channel.send({ embeds: [korone4k] });

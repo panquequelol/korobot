@@ -8,8 +8,6 @@ import { resolve } from 'path';
 import { url } from 'inspector';
 const require = createRequire(import.meta.url);
 const { MessageEmbed } = require('discord.js');
-const { getInfo } = require('ytdl-getinfo') // youtube ytdl package from NPM
-
 
 console.clear();
 const Discord = require('discord.js');
@@ -74,28 +72,25 @@ client.on('messageCreate', (message) => {
 							vtuber.channel.name.split(' ')[1]
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
+						ytID: vtuber.yt_video_key,
 						titulo: vtuber.title,
 						imagen: vtuber.channel.photo,
-						viewers: vtuber.live_viewers
+						viewers: vtuber.live_viewers,
 					}));
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
-						let urlThumbnail = []
-						getInfo(vtuber.link, function(err, info) {
-  							urlThumbnail.push(info.thumbnail_url)
+						let urlThumbnail = [];
+						getInfo(vtuber.link, function (err, info) {
+							urlThumbnail.push(info.thumbnail_url);
 						});
-
 
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
 							.setThumbnail(vtuber.imagen)
-							.setImage(urlThumbnail[1]);
-
-
-
+							.setImage(`https://i.ytimg.com/vi/${vtuber.ytID}/hqdefault.jpg`);
 
 						message.channel.send({ embeds: [embedTitulo] });
 					});

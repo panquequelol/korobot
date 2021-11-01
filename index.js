@@ -82,7 +82,7 @@ client.on('messageCreate', (message) => {
 							.setTitle(vtuber.titulo)
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre}`)
-							.setImage(vtuber.imagen);
+							.setThumbnail(vtuber.imagen);
 
 						message.channel.send({ embeds: [embedTitulo] });
 					});

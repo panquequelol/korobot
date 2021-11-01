@@ -128,13 +128,28 @@ client.on('messageCreate', (message) => {
 					const d = new Date();
 					let monthNow = d.getMonth() + 1,
 						yearNow = d.getFullYear() * 1,
-						dayNow = d.getDate() * 1;
+						dayNow = d.getDate() * 1,
+						meses = {
+							1:'enero',
+							2:'febrero',
+							3:'marzo',
+							4:'abril',
+							5:'mayo',
+							6:'junio',
+							7:'julio',
+							8:'agosto',
+							9:'septiembre',
+							10:'octubre',
+							11:'noviembre',
+							12:'diciembre'
+						}
+						monthStreamWords = meses[monthNow]
 
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
 						let monthStream = vtuber.fecha.substring(5, 7) * 1,
 							yearStream = vtuber.fecha.substring(0, 4) * 1,
-							dayStream = vtuber.fecha.substring(8, 10) * 1;
+							dayStream = vtuber.fecha.substring(8, 10) * 1,
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === dayStream + 1) {
@@ -142,7 +157,7 @@ client.on('messageCreate', (message) => {
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
 									.setAuthor(
-										`${vtuber.nombre} empieza el ${dayStream}/${monthStream}`,
+										`${vtuber.nombre} empieza el ${dayStream} de ${monthStreamWords}`,
 										vtuber.imagen
 									)
 									.setThumbnail(

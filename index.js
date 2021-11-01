@@ -130,26 +130,26 @@ client.on('messageCreate', (message) => {
 						yearNow = d.getFullYear() * 1,
 						dayNow = d.getDate() * 1,
 						meses = {
-							1:'enero',
-							2:'febrero',
-							3:'marzo',
-							4:'abril',
-							5:'mayo',
-							6:'junio',
-							7:'julio',
-							8:'agosto',
-							9:'septiembre',
-							10:'octubre',
-							11:'noviembre',
-							12:'diciembre'
-						}
-						monthStreamWords = meses[monthNow]
+							1: 'enero',
+							2: 'febrero',
+							3: 'marzo',
+							4: 'abril',
+							5: 'mayo',
+							6: 'junio',
+							7: 'julio',
+							8: 'agosto',
+							9: 'septiembre',
+							10: 'octubre',
+							11: 'noviembre',
+							12: 'diciembre',
+						};
+					monthStreamWords = meses[monthNow];
 
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
 						let monthStream = vtuber.fecha.substring(5, 7) * 1,
 							yearStream = vtuber.fecha.substring(0, 4) * 1,
-							dayStream = vtuber.fecha.substring(8, 10) * 1,
+							dayStream = vtuber.fecha.substring(8, 10) * 1;
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === dayStream + 1) {

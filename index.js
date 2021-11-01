@@ -92,7 +92,7 @@ client.on('messageCreate', (message) => {
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
 							.setThumbnail(vtuber.imagen)
-							.setImage(urlThumbnail);
+							.setImage(urlThumbnail[1]);
 
 
 

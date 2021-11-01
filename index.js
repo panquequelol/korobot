@@ -72,7 +72,7 @@ client.on('messageCreate', (message) => {
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
-						imagen: vtuber.thumbnail,
+						imagen: vtuber.channel.photo,
 						// viewers: vtuber.live_viewers,
 					}));
 

@@ -74,7 +74,7 @@ client.on('messageCreate', (message) => {
 						titulo: vtuber.title,
 						imagen: vtuber.channel.photo,
 						viewers: vtuber.live_viewers,
-						thumbnail: vtuber.thumbnail,
+						miniatura: vtuber.thumbnail,
 					}));
 
 					message.reply(` > ** Están en stream... **`);
@@ -84,7 +84,9 @@ client.on('messageCreate', (message) => {
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
 							.setThumbnail(vtuber.imagen)
-							.setImage(vtuber.thumbnail);
+							.setImage(vtuber.miniatura);
+
+						console.log(vtuber.miniatura);
 
 						message.channel.send({ embeds: [embedTitulo] });
 					});

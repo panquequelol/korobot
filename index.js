@@ -81,11 +81,12 @@ client.on('messageCreate', (message) => {
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
 						let embedTitulo = new MessageEmbed()
-							.setTitle(`🔗${vtuber.titulo}`)
+							.setTitle(`🔗${vtuber.titulo}`, vtuber.imagen)
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
-							.setThumbnail(vtuber.imagen)
-							.setImage(`https://i.ytimg.com/vi/${vtuber.ytID}/hqdefault.jpg`);
+							.setThumbnail(
+								`https://i.ytimg.com/vi/${vtuber.ytID}/hqdefault.jpg`
+							);
 
 						message.channel.send({ embeds: [embedTitulo] });
 					});

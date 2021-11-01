@@ -73,15 +73,15 @@ client.on('messageCreate', (message) => {
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 						imagen: vtuber.channel.photo,
-						// viewers: vtuber.live_viewers,
+						viewers: vtuber.live_viewers,
 					}));
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
 						let embedTitulo = new MessageEmbed()
-							.setTitle(vtuber.titulo)
+							.setTitle(`🔗${vtuber.titulo}`)
 							.setURL(vtuber.link)
-							.setAuthor(`${vtuber.nombre}`)
+							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
 							.setThumbnail(vtuber.imagen);
 
 						message.channel.send({ embeds: [embedTitulo] });

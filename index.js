@@ -5,6 +5,7 @@
 import fetch from 'node-fetch';
 import { createRequire } from 'module';
 import { resolve } from 'path';
+import { url } from 'inspector';
 const require = createRequire(import.meta.url);
 const { MessageEmbed } = require('discord.js');
 const { getInfo } = require('ytdl-getinfo') // youtube ytdl package from NPM
@@ -80,9 +81,9 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
-						
-						ytdl.getInfo(vtuber.link, function(err, info) {
-  							const urlThumbnail = info.thumbnail_url
+						let urlThumbnail = []
+						getInfo(vtuber.link, function(err, info) {
+  							urlThumbnail.push(info.thumbnail_url)
 						});
 
 

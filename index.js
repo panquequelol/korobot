@@ -54,7 +54,7 @@ client.on('messageCreate', (message) => {
 
 		case '4k':
 			let korone4k = new MessageEmbed()
-				.setTitle(
+				.setAuthor(
 					`**${message.author.username}** atrapo en 4k a ${ argumentos[1] }`
 				)
 				.setImage('https://c.tenor.com/bE4ROSkkHRcAAAAd/korone-hololive.gif');

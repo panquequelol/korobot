@@ -80,11 +80,6 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
-						let urlThumbnail = [];
-						getInfo(vtuber.link, function (err, info) {
-							urlThumbnail.push(info.thumbnail_url);
-						});
-
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
 							.setURL(vtuber.link)

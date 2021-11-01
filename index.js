@@ -7,6 +7,8 @@ import { createRequire } from 'module';
 import { resolve } from 'path';
 const require = createRequire(import.meta.url);
 const { MessageEmbed } = require('discord.js');
+const { getInfo } = require('ytdl-getinfo') // youtube ytdl package from NPM
+
 
 console.clear();
 const Discord = require('discord.js');
@@ -73,20 +75,26 @@ client.on('messageCreate', (message) => {
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
 						titulo: vtuber.title,
 						imagen: vtuber.channel.photo,
-						viewers: vtuber.live_viewers,
-						miniatura: vtuber.thumbnail,
+						viewers: vtuber.live_viewers
 					}));
 
 					message.reply(` > ** Están en stream... **`);
 					envivo.forEach((vtuber) => {
+						
+						ytdl.getInfo(vtuber.link, function(err, info) {
+  							const urlThumbnail = info.thumbnail_url
+						});
+
+
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
 							.setURL(vtuber.link)
 							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`)
 							.setThumbnail(vtuber.imagen)
-							.setImage(vtuber.miniatura);
+							.setImage(urlThumbnail);
 
-						console.log(vtuber.miniatura);
+
+
 
 						message.channel.send({ embeds: [embedTitulo] });
 					});

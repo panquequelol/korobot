@@ -143,7 +143,7 @@ client.on('messageCreate', (message) => {
 							11: 'noviembre',
 							12: 'diciembre',
 						};
-					monthStreamWords = meses[monthNow];
+					const monthStreamWords = meses[monthNow];
 
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {

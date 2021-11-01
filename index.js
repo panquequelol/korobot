@@ -83,7 +83,10 @@ client.on('messageCreate', (message) => {
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
 							.setURL(vtuber.link)
-							.setAuthor(`${vtuber.nombre} tiene ${vtuber.viewers} viewers`,vtuber.imagen)
+							.setAuthor(
+								`${vtuber.nombre}, con ${vtuber.viewers} viewers`,
+								vtuber.imagen
+							)
 							.setThumbnail(
 								`https://i.ytimg.com/vi/${vtuber.ytID}/default.jpg`
 							);
@@ -110,33 +113,39 @@ client.on('messageCreate', (message) => {
 							vtuber.channel.name.split(' ')[1]
 						}`,
 						link: `https://www.youtube.com/watch?v=${vtuber.yt_video_key}`,
-						titulo: vtuber.title,
 						fecha: vtuber.live_schedule,
+						ytID: vtuber.yt_video_key,
+						titulo: vtuber.title,
 						imagen: vtuber.channel.photo,
+						viewers: vtuber.live_viewers,
 					}));
 
 					// data.upcoming.live_schedule
 					// 2022-09-15T10:00:00.000Z
 
 					const d = new Date();
-					let mesActual = d.getMonth() + 1,
-						anhoActual = d.getFullYear() * 1,
-						diaActual = d.getDate() * 1;
+					let monthNow = d.getMonth() + 1,
+						yearNow = d.getFullYear() * 1,
+						dayNow = d.getDate() * 1;
 
 					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
-						// ! fechas obsoletos.
-						let mesStream = vtuber.fecha.substring(5, 7) * 1,
-							anhoStream = vtuber.fecha.substring(0, 4) * 1,
-							diaStream = vtuber.fecha.substring(8, 10) * 1;
+						let monthStream = vtuber.fecha.substring(5, 7) * 1,
+							yearStream = vtuber.fecha.substring(0, 4) * 1,
+							dayStream = vtuber.fecha.substring(8, 10) * 1;
 
-						if (mesActual === mesStream && anhoActual === anhoStream) {
-							if (diaActual === diaStream || diaActual === diaStream + 1) {
+						if (monthNow === monthStream && yearNow === yearStream) {
+							if (dayNow === dayStream || dayNow === dayStream + 1) {
 								let embedTitulo = new MessageEmbed()
-									.setTitle(vtuber.titulo)
+									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
-									.setAuthor(`${vtuber.nombre} ${diaStream}/${mesStream}`)
-									.setImage(vtuber.imagen);
+									.setAuthor(
+										`${vtuber.nombre}, comienza el ${dayStream}/${monthStream} hay ${vtuber.viewers} personas esperando`,
+										vtuber.imagen
+									)
+									.setThumbnail(
+										`https://i.ytimg.com/vi/${vtuber.ytID}/default.jpg`
+									);
 
 								message.channel.send({ embeds: [embedTitulo] });
 							}

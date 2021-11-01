@@ -53,12 +53,12 @@ client.on('messageCreate', (message) => {
 			break;
 
 		case '4k':
-			message.channel.send(
-				`${message.author.username} atrapo en 4k a ${argumentos[1]}`
-			);
-			message.channel.send({
-				files: ['https://c.tenor.com/bE4ROSkkHRcAAAAd/korone-hololive.gif'],
-			});
+			let korone4k = new MessageEmbed()
+				.setTitle(
+					`**${message.author.username}** atrapo en 4k a ${argumentos[1]}`
+				)
+				.setImage('https://c.tenor.com/bE4ROSkkHRcAAAAd/korone-hololive.gif');
+			message.channel.send({ embeds: [korone4k] });
 			break;
 
 		case 'online':

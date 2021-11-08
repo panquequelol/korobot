@@ -159,10 +159,10 @@ client.on('messageCreate', (message) => {
 							dayStream = vtuber.fecha.substring(8, 10) * 1;
 
 						let hourStream =
-								vtuber.fecha.substring(10, 12) * 1 != 0
-									? vtuber.fecha.substring(10, 12) * 1 - 3
-									: 0,
-							minuteStream = vtuber.fecha.substring(13, 15) * 1;
+							vtuber.fecha.substring(10, 12) * 1 != 0
+								? vtuber.fecha.substring(11, 13) * 1 - 3
+								: 0;
+						let minuteStream = vtuber.fecha.substring(13, 15);
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === dayStream + 1) {

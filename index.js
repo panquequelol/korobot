@@ -16,7 +16,6 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 client.commands = new Discord.Collection();
 
-
 // funcion de discord js, obtener mencion
 function getUserFromMention(mention) {
 	if (!mention) return;
@@ -31,7 +30,6 @@ function getUserFromMention(mention) {
 		return client.users.cache.get(mention);
 	}
 }
-
 
 client.on('ready', () => {
 	console.log('bot prendido');
@@ -51,8 +49,7 @@ client.on('messageCreate', (message) => {
 			> **+online**, *muestra que vtubers estan streameando*
 			> **+upcoming**, *muestra streams de vtubers mas proximos*
 			> **+taiwan**, *-10000 social credits*
-			> **+china**, *+10000 social credits*
-			> **+4k @user**, *caught in 4k*`);
+			> **+china**, *+10000 social credits*`);
 			break;
 
 		case 'taiwan':
@@ -67,15 +64,6 @@ client.on('messageCreate', (message) => {
 					'https://i.kym-cdn.com/photos/images/newsfeed/002/121/094/076.jpg',
 				],
 			});
-			break;
-
-		case '4k':
-			let korone4k = new MessageEmbed()
-				.setTitle(
-					`${message.author.username} atrapo en 4k a ${ getUserFromMention(argumentos[1]) }`
-				)
-				.setImage('https://c.tenor.com/bE4ROSkkHRcAAAAd/korone-hololive.gif');
-			message.channel.send({ embeds: [korone4k] });
 			break;
 
 		case 'online':
@@ -95,7 +83,7 @@ client.on('messageCreate', (message) => {
 						viewers: vtuber.live_viewers,
 					}));
 
-					message.reply(` > ** Están en stream... **`);
+					message.reply(` > ** ★ Están en stream... **`);
 					envivo.forEach((vtuber) => {
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
@@ -162,7 +150,7 @@ client.on('messageCreate', (message) => {
 						};
 					const monthStreamWords = meses[monthNow];
 
-					message.reply(` > ** Comenzaran sus streams aproximamente...  **`);
+					message.reply(` > ** ★ Comenzaran sus streams aproximamente...  **`);
 					estaUpcoming.forEach((vtuber) => {
 						let monthStream = vtuber.fecha.substring(5, 7) * 1,
 							yearStream = vtuber.fecha.substring(0, 4) * 1,

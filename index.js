@@ -158,7 +158,11 @@ client.on('messageCreate', (message) => {
 							yearStream = vtuber.fecha.substring(0, 4) * 1,
 							dayStream = vtuber.fecha.substring(8, 10) * 1;
 
-						let hourStream = vtuber.fecha.substring(10, 13) * 1 - 3;
+						let hourStream =
+								vtuber.fecha.substring(10, 12) * 1 != 0
+									? vtuber.fecha.substring(10, 12) * 1 - 3
+									: 00,
+							minuteStream = vtuber.fecha.substring(13, 15) * 1;
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === dayStream + 1) {
@@ -166,7 +170,7 @@ client.on('messageCreate', (message) => {
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
 									.setAuthor(
-										`${vtuber.nombre} empieza el ${dayStream} de ${monthStreamWords} a las ${hourStream}`,
+										`${vtuber.nombre} empieza el ${dayStream} de ${monthStreamWords} a las ${hourStream} ${minuteStream}`,
 										vtuber.imagen
 									)
 									.setThumbnail(

@@ -151,10 +151,14 @@ client.on('messageCreate', (message) => {
 					const monthStreamWords = meses[monthNow];
 
 					message.reply(` > ** ★ Comenzaran sus streams aproximamente...  **`);
+					// 2021-11-08T14:00:00.000Z
+					// 0123456789
 					estaUpcoming.forEach((vtuber) => {
 						let monthStream = vtuber.fecha.substring(5, 7) * 1,
 							yearStream = vtuber.fecha.substring(0, 4) * 1,
 							dayStream = vtuber.fecha.substring(8, 10) * 1;
+
+						let hourStream = (vtuber.fecha.substring(10,13) * 1)-3,
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === dayStream + 1) {
@@ -162,7 +166,7 @@ client.on('messageCreate', (message) => {
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
 									.setAuthor(
-										`${vtuber.nombre} empieza el ${dayStream} de ${monthStreamWords}`,
+										`${vtuber.nombre} empieza el ${dayStream} de ${monthStreamWords} a las ${hourStream}`,
 										vtuber.imagen
 									)
 									.setThumbnail(

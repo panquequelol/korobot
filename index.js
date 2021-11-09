@@ -215,7 +215,7 @@ client.on('messageCreate', (message) => {
 								: 0;
 						let minuteStream = vtuber.fecha.substring(14, 16);
 
-						const cloneDayStream = [...dayStream];
+						const cloneDayStream = dayStream;
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream || dayNow === cloneDayStream + 1) {

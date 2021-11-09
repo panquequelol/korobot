@@ -80,7 +80,7 @@ client.on('messageCreate', (message) => {
 					}
 
 					let hololiveCanalOficialEmbed = new MessageEmbed()
-							.setTitle(`🔗Canal Oficial de Hololive`)
+							.setTitle(`🔗 Canal Oficial de Hololive`)
 							.setURL(hololiveCanalOficial.link)
 							.setAuthor(
 								`${hololiveCanalOficial.nombre}`,
@@ -104,9 +104,9 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** ★ Están en stream... **`);
 					if (envivo.length==0) {
-						message.reply("Actualemte **NO HAY** vtubers online")
+						message.channel.send("Actualmente **NO HAY** vtubers online")
 						(message.channel.send({ embeds: [hololiveCanalOficialEmbed]}))
-						} else (message.reply(`hay ${envivo.length} vtubers online`));
+						} else (message.channel.send(`hay ${envivo.length} vtubers online`));
 
 					envivo.forEach((vtuber) => {
 						let embedTitulo = new MessageEmbed()
@@ -146,7 +146,7 @@ client.on('messageCreate', (message) => {
 					}
 
 					let hololiveCanalOficialEmbed = new MessageEmbed()
-							.setTitle(`🔗Canal Oficial de Hololive`)
+							.setTitle(`🔗 Canal Oficial de Hololive`)
 							.setURL(hololiveCanalOficial.link)
 							.setAuthor(
 								`${hololiveCanalOficial.nombre}`,
@@ -195,9 +195,9 @@ client.on('messageCreate', (message) => {
 
 					message.reply(` > ** ★ Comenzaran sus streams aproximamente...  **`);
 					if (estaUpcoming.length==0) {
-						message.reply("Actualemte **NO HAY** no hay ningun stream programado")
+						message.channel.send("Actualmente **NO HAY** no hay ningun stream programado")
 						(message.channel.send({ embeds: [hololiveCanalOficialEmbed]}))
-						} else (message.reply(`hay ${estaUpcoming.length} streams programados`));
+						} else (message.channel.send(`hay ${estaUpcoming.length} streams programados`));
 
 					// 2021-11-08T14:00:00.000Z
 					// 0123456789

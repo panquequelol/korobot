@@ -175,22 +175,7 @@ client.on('messageCreate', (message) => {
 					const d = new Date();
 					let monthNow = d.getMonth() + 1,
 						yearNow = d.getFullYear() * 1,
-						dayNow = d.getDate() * 1,
-						meses = {
-							1: 'enero',
-							2: 'febrero',
-							3: 'marzo',
-							4: 'abril',
-							5: 'mayo',
-							6: 'junio',
-							7: 'julio',
-							8: 'agosto',
-							9: 'septiembre',
-							10: 'octubre',
-							11: 'noviembre',
-							12: 'diciembre',
-						};
-					const monthStreamWords = meses[monthNow];
+						dayNow = d.getDate() * 1;
 
 					message.reply(` > ** ★ Comenzaran sus streams aproximamente...  **`);
 					if (estaUpcoming.length == 0) {
@@ -199,7 +184,7 @@ client.on('messageCreate', (message) => {
 						)(message.channel.send({ embeds: [hololiveCanalOficialEmbed] }));
 					} else
 						message.channel.send(
-							`hay **${estaUpcoming.length}** streams programados, los siguientes son hoy:`
+							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy**:`
 						);
 
 					// 2021-11-08T14:00:00.000Z
@@ -217,20 +202,13 @@ client.on('messageCreate', (message) => {
 
 						const cloneDayStream = dayStream;
 
-						console.log(
-							dayStream,
-							hourStream,
-							minuteStream,
-							vtuber.fecha.substring(10, 12) * 1
-						);
-
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
 									.setAuthor(
-										`${vtuber.nombre} empieza el ${dayStream} de este mes a las ${hourStream}:${minuteStream} hora Chilena`,
+										`${vtuber.nombre}`,
 										vtuber.imagen
 									)
 									.setThumbnail(

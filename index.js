@@ -184,7 +184,7 @@ client.on('messageCreate', (message) => {
 						)(message.channel.send({ embeds: [hololiveCanalOficialEmbed] }));
 					} else
 						message.channel.send(
-							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy (${dayNow}/${monthNow})**:`
+							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy**:`
 						);
 
 					// 2021-11-08T14:00:00.000Z

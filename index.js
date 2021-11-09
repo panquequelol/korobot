@@ -197,7 +197,7 @@ client.on('messageCreate', (message) => {
 					if (estaUpcoming.length==0) {
 						message.channel.send("Actualmente **NO HAY** no hay ningun stream programado")
 						(message.channel.send({ embeds: [hololiveCanalOficialEmbed]}))
-						} else (message.channel.send(`hay ${estaUpcoming.length} streams programados`));
+						} else (message.channel.send(`hay **${estaUpcoming.length}** streams programados, los siguientes son proximos:`));
 
 					// 2021-11-08T14:00:00.000Z
 					// 0123456789

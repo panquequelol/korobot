@@ -215,8 +215,10 @@ client.on('messageCreate', (message) => {
 								: 0;
 						let minuteStream = vtuber.fecha.substring(14, 16);
 
+						const cloneDayStream = [...dayStream];
+
 						if (monthNow === monthStream && yearNow === yearStream) {
-							if (dayNow === dayStream || dayNow === [...dayStream] + 1) {
+							if (dayNow === dayStream || dayNow === cloneDayStream + 1) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)

@@ -72,6 +72,25 @@ client.on('messageCreate', (message) => {
 					const respuesta = await fetch('https://api.holotools.app/v1/live');
 					const data = await respuesta.json();
 
+					const hololiveCanalOficial = {
+						nombre: "hololive ホロライブ - VTuber Group",
+						link: "https://www.youtube.com/channel/UCJFZiqLMntJufDCHc6bQixg",
+						imagen: "https://yt3.ggpht.com/ytc/AKedOLTj0OSWM9TvPy4e8v1_o99OtP3Bg7FXthdkgr2bCQ=s900-c-k-c0x00ffffff-no-rj",
+
+					}
+
+					let hololiveCanalOficialEmbed = new MessageEmbed()
+							.setTitle(`🔗Canal Oficial de Hololive`)
+							.setURL(hololiveCanalOficial.link)
+							.setAuthor(
+								`${hololiveCanalOficial.nombre}`,
+								hololiveCanalOficial.imagen
+							)
+							.setThumbnail(
+								`https://1000marcas.net/wp-content/uploads/2021/08/Hololive-Logo.png`
+							);
+
+
 					const envivo = data.live.map((vtuber) => ({
 						nombre: `${vtuber.channel.name.split(' ')[0]} ${
 							vtuber.channel.name.split(' ')[1]
@@ -84,6 +103,11 @@ client.on('messageCreate', (message) => {
 					}));
 
 					message.reply(` > ** ★ Están en stream... **`);
+					if (envivo.length==0) {
+						message.reply("Actualemte **NO HAY** vtubers online")
+						(message.channel.send({ embeds: [hololiveCanalOficialEmbed]}))
+						} else (message.reply(`hay ${envivo.length} vtubers online`));
+
 					envivo.forEach((vtuber) => {
 						let embedTitulo = new MessageEmbed()
 							.setTitle(`🔗${vtuber.titulo}`)
@@ -95,8 +119,9 @@ client.on('messageCreate', (message) => {
 							.setThumbnail(
 								`https://i.ytimg.com/vi/${vtuber.ytID}/default.jpg`
 							);
-
+						
 						message.channel.send({ embeds: [embedTitulo] });
+						
 					});
 
 					// message.channel.send(`${envivo}`)
@@ -112,6 +137,24 @@ client.on('messageCreate', (message) => {
 				try {
 					const respuesta = await fetch('https://api.holotools.app/v1/live');
 					const data = await respuesta.json();
+
+					const hololiveCanalOficial = {
+						nombre: "hololive ホロライブ - VTuber Group",
+						link: "https://www.youtube.com/channel/UCJFZiqLMntJufDCHc6bQixg",
+						imagen: "https://yt3.ggpht.com/ytc/AKedOLTj0OSWM9TvPy4e8v1_o99OtP3Bg7FXthdkgr2bCQ=s900-c-k-c0x00ffffff-no-rj",
+
+					}
+
+					let hololiveCanalOficialEmbed = new MessageEmbed()
+							.setTitle(`🔗Canal Oficial de Hololive`)
+							.setURL(hololiveCanalOficial.link)
+							.setAuthor(
+								`${hololiveCanalOficial.nombre}`,
+								hololiveCanalOficial.imagen
+							)
+							.setThumbnail(
+								`https://1000marcas.net/wp-content/uploads/2021/08/Hololive-Logo.png`
+							);
 
 					const estaUpcoming = data.upcoming.map((vtuber) => ({
 						nombre:
@@ -151,6 +194,11 @@ client.on('messageCreate', (message) => {
 					const monthStreamWords = meses[monthNow];
 
 					message.reply(` > ** ★ Comenzaran sus streams aproximamente...  **`);
+					if (estaUpcoming.length==0) {
+						message.reply("Actualemte **NO HAY** no hay ningun stream programado")
+						(message.channel.send({ embeds: [hololiveCanalOficialEmbed]}))
+						} else (message.reply(`hay ${estaUpcoming.length} streams programados`));
+
 					// 2021-11-08T14:00:00.000Z
 					// 0123456789
 					estaUpcoming.forEach((vtuber) => {

@@ -184,7 +184,7 @@ client.on('messageCreate', (message) => {
 						)(message.channel.send({ embeds: [hololiveCanalOficialEmbed] }));
 					} else
 						message.channel.send(
-							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy**:`
+							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy (${dayNow}/${monthNow})**:`
 						);
 
 					// 2021-11-08T14:00:00.000Z
@@ -207,10 +207,7 @@ client.on('messageCreate', (message) => {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
-									.setAuthor(
-										`${vtuber.nombre}`,
-										vtuber.imagen
-									)
+									.setAuthor(`${vtuber.nombre}`, vtuber.imagen)
 									.setThumbnail(
 										`https://i.ytimg.com/vi/${vtuber.ytID}/default.jpg`
 									);

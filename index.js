@@ -217,6 +217,8 @@ client.on('messageCreate', (message) => {
 
 						const cloneDayStream = dayStream;
 
+						console.log(dayStream, hourStream, minuteStream);
+
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream) {
 								let embedTitulo = new MessageEmbed()

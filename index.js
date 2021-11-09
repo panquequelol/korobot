@@ -199,7 +199,7 @@ client.on('messageCreate', (message) => {
 						)(message.channel.send({ embeds: [hololiveCanalOficialEmbed] }));
 					} else
 						message.channel.send(
-							`hay **${estaUpcoming.length}** streams programados, los siguientes son proximos:`
+							`hay **${estaUpcoming.length}** streams programados, los siguientes son hoy:`
 						);
 
 					// 2021-11-08T14:00:00.000Z
@@ -218,7 +218,7 @@ client.on('messageCreate', (message) => {
 						const cloneDayStream = dayStream;
 
 						if (monthNow === monthStream && yearNow === yearStream) {
-							if (dayNow === dayStream || dayNow === cloneDayStream + 1) {
+							if (dayNow === dayStream) {
 								let embedTitulo = new MessageEmbed()
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)

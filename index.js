@@ -186,11 +186,14 @@ client.on('messageCreate', (message) => {
 						)(message.channel.send({ embeds: [hololiveCanalOficialEmbed] }));
 					} else
 						message.channel.send(
-							`hay **${estaUpcoming.length}** streams programados, los siguientes son **hoy**:`
+							`**${estaUpcoming.length}** streams programados, los siguientes son **hoy**:`
 						);
 
 					// 2021-11-08T14:00:00.000Z
 					// 0123456789
+
+					let contadorUpcoming = 0;
+
 					estaUpcoming.forEach((vtuber) => {
 						let monthStream = vtuber.fecha.substring(5, 7) * 1,
 							yearStream = vtuber.fecha.substring(0, 4) * 1,
@@ -206,6 +209,9 @@ client.on('messageCreate', (message) => {
 
 						if (monthNow === monthStream && yearNow === yearStream) {
 							if (dayNow === dayStream) {
+
+								contadorUpcoming++;
+
 								let embedTitulo = new MessageEmbed()
 									.setTitle(`🔗${vtuber.titulo}`)
 									.setURL(vtuber.link)
@@ -217,6 +223,13 @@ client.on('messageCreate', (message) => {
 								message.channel.send({ embeds: [embedTitulo] });
 							}
 						}
+
+						setTimeout(() => {
+							if (contadorUpcoming==0) {
+								message.channel.send('No hay streams para hoy.');
+							}
+						}, 2000);
+
 					});
 				} catch (error) {
 					console.log(`hubo este error: ${error}`);
